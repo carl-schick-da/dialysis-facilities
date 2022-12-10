@@ -1,0 +1,2 @@
+
+DIVIDE ( SUM ( Scores[dea] ), SUM ( Scores[exd] ) )

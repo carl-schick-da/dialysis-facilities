@@ -1,30 +1,9 @@
 let
-    Source = Table.SelectColumns(#"FY 2021 Dialysis Facility Reports", {"Measure Name", "Measure ID"}),
+    Source = Table.SelectColumns(#"FY 2021 Dialysis Facility Reports", {"Measure ID", "Measure Name"}),
     Grouped = Table.Distinct(Source),
-    #"Sorted Rows" = Table.Sort(Grouped,{{"Measure ID", Order.Ascending}}),
-    #"Replaced agemy1_f Text" = Table.ReplaceValue(#"Sorted Rows",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "agemy1_f" then Text.Replace([Measure Name], "2019", "2016") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"}),
-    #"Replaced agemy2_f Text" = Table.ReplaceValue(#"Replaced agemy1_f Text",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "agemy2_f" then Text.Replace([Measure Name], "2019", "2017") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"}),
-    #"Replaced agemy3_f Text" = Table.ReplaceValue(#"Replaced agemy2_f Text",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "agemy3_f" then Text.Replace([Measure Name], "2019", "2018") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"}),
-    #"Replaced edpty2_f Text" = Table.ReplaceValue(#"Replaced agemy3_f Text",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "edpty2_f" then Text.Replace([Measure Name], "2016", "2017") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"}),
-    #"Replaced edpty3_f Text" = Table.ReplaceValue(#"Replaced edpty2_f Text",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "edpty3_f" then Text.Replace([Measure Name], "2016", "2018") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"}),
-    #"Replaced edpty4_f Text" = Table.ReplaceValue(#"Replaced edpty3_f Text",
-                                            each [Measure Name],
-                                            each if [Measure ID] = "edpty4_f" then Text.Replace([Measure Name], "2016", "2019") else [Measure Name],
-                                            Replacer.ReplaceText,{"Measure Name"})
+    #"Split Column by Delimiter" = Table.SplitColumn(Grouped, "Measure Name", Splitter.SplitTextByEachDelimiter({":"}, QuoteStyle.Csv, false), {"Measure Prefix", "Measure Name"}),
+    #"Trimmed Text" = Table.TransformColumns(#"Split Column by Delimiter",{{"Measure Name", Text.Trim, type text}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Trimmed Text",{"Measure Prefix"}),
+    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"Measure ID"})
 in
-    #"Replaced edpty4_f Text"
+    #"Removed Duplicates"

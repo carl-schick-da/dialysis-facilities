@@ -1,0 +1,10 @@
+SWITCH(
+  TRUE,
+  ISBLANK('Facilities'[Chain Name]),
+  "(Blank)",
+  'Facilities'[Chain Name] IN {"DAVITA"},
+  "DaVita",
+  'Facilities'[Chain Name] IN {"FRESENIUS MEDICAL CARE"},
+  "Fresenius",
+  "Other"
+)
