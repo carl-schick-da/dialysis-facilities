@@ -1,0 +1,14 @@
+
+VAR Summarized_Table =
+    CALCULATETABLE (
+        ADDCOLUMNS (
+            SUMMARIZE ( Scores, [Year], Facilities[Dialysis Provider] ),
+            "@Percent Poor Kt/V", [Percent Poor Kt/V]
+        ),
+        ALLSELECTED ()
+    )
+VAR BestValue =
+    MINX ( Summarized_Table, [@Percent Poor Kt/V] )
+VAR CurrentValue = [Percent Poor Kt/V]
+RETURN
+    IF ( CurrentValue = BestValue, 1, 0 )

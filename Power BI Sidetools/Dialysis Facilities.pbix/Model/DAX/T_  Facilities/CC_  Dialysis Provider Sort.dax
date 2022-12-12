@@ -1,0 +1,1 @@
+IF(Facilities[Chain Name] = "FRESENIUS MEDICAL CARE", 1, IF(Facilities[Chain Name] = "DAVITA", 2, 3))

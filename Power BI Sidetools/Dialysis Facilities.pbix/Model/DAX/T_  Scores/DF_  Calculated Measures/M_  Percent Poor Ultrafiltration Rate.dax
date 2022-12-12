@@ -1,2 +1,0 @@
-
-DIVIDE ( SUM ( Scores[bad_ufr] ), SUM ( Scores[CWhdmthdenom] ) )

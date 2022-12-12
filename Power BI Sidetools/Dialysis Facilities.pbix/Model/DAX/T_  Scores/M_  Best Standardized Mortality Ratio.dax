@@ -1,0 +1,14 @@
+
+VAR Summarized_Table =
+    CALCULATETABLE (
+        ADDCOLUMNS (
+            SUMMARIZE ( Scores, [Year], Facilities[Dialysis Provider] ),
+            "@Standardized Mortality Ratio", [Standardized Mortality Ratio]
+        ),
+        ALLSELECTED ()
+    )
+VAR BestValue =
+    MINX ( Summarized_Table, [@Standardized Mortality Ratio] )
+VAR CurrentValue = [Standardized Mortality Ratio]
+RETURN
+    IF ( CurrentValue = BestValue, 1, 0 )

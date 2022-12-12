@@ -1,2 +1,5 @@
 
-DIVIDE ( SUM ( Scores[staff] ), SUM ( Scores[endcnt] ) )
+VAR spr_percent =
+    DIVIDE ( SUM ( Scores[staff] ), SUM ( Scores[endcnt] ) )
+RETURN
+    1 / spr_percent

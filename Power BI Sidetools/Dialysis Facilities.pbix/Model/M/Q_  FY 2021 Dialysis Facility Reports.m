@@ -20,7 +20,7 @@ let
             [Measure ID] = "CWhdufr2" or
             [Measure ID] = "CWhdavgktv" or
             [Measure ID] = "CWhdktv1" or
-            [Measure ID] = "CWhdmthdenom"
+            [Measure ID] = "CWhdptmthdenom"
             ))
 in
     #"Select Specific Measures"

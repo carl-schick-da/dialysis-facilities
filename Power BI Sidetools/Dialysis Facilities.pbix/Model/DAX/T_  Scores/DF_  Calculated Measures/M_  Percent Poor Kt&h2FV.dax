@@ -1,2 +1,2 @@
 
-DIVIDE ( SUM ( Scores[bad_ktv] ), SUM ( Scores[CWhdmthdenom] ) )
+DIVIDE ( SUM ( Scores[total_bad_ktv] ), SUM ( Scores[CWhdptmthdenom] ) )
