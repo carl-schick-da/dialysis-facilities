@@ -3,4 +3,4 @@
 This project will analyze dialysis facilities in the United States and attempt to answer the following question: 
  - How does Fresenius compare to DaVita and Other dialysis providers in key safety measures?
 
-Access Published Report: [app.powerbi.com](https://app.powerbi.com/view?r=eyJrIjoiMzk1Y2U4ZTQtZjdlNS00MDFhLTkxN2QtMmJkOGM5NzMwNGQwIiwidCI6IjNjOTM5MDNhLTdhOTgtNGNhYS1hZGU0LTQxNGZhODY4ZWNjYiJ9)
+Access Published Report: [app.powerbi.com](https://app.powerbi.com/view?r=eyJrIjoiMzk1Y2U4ZTQtZjdlNS00MDFhLTkxN2QtMmJkOGM5NzMwNGQwIiwidCI6IjNjOTM5MDNhLTdhOTgtNGNhYS1hZGU0LTQxNGZhODY4ZWNjYiJ9&pageName=ReportSectiond6722bc48b8b814373e7)
