@@ -1,5 +1,5 @@
 let
-    Source = Table.SelectColumns(#"FY 2021 Dialysis Facility Reports", {"Measure ID", "Measure Name"}),
+    Source = Table.SelectColumns(#"Dialysis Facility Reports", {"Measure ID", "Measure Name"}),
     Grouped = Table.Distinct(Source),
     #"Split Column by Delimiter" = Table.SplitColumn(Grouped, "Measure Name", Splitter.SplitTextByEachDelimiter({":"}, QuoteStyle.Csv, false), {"Measure Prefix", "Measure Name"}),
     #"Trimmed Text" = Table.TransformColumns(#"Split Column by Delimiter",{{"Measure Name", Text.Trim, type text}}),
